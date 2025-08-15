@@ -2,6 +2,19 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Navigate, Route, Routes } from 'react-router'
+import Home from './Router/Home'
+import About from './Router/about'
+import Login from './Router/Login'
+import Navbar from './Router/Navbar'
+import PageNotfound from './Router/PageNotfound'
+import College from './Router/College'
+import Student from './Router/Student'
+import Department from './Router/Department'
+import Details from './Router/Details'
+import UserDynamic from './Router/UserDynamic'
+import UserDetails from './Router/UserDetails'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,25 +22,41 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+        {/* <Navbar/> */}
+
+
+        <Routes>
+          <Route element={<Navbar />} >
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/about' element={<About />}></Route>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/users/list?' element={<UserDynamic />}></Route>
+            
+            <Route path='/users/:id/:name?' element={<UserDetails />} />
+          </Route>
+
+
+
+          <Route path='/college' element={<College />}>
+
+            <Route index element={<Student />} />
+            <Route path='department' element={<Department />} />
+            <Route path='details' element={<Details />} />
+
+          </Route>
+          {/* 404 not found  */}
+          {/* <Route path='/*' element = { <PageNotfound/> }/> */}
+
+          <Route path='/*' element={<Navigate to='/login' />} />
+        </Routes>
+
+
+
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+
     </>
   )
 }

@@ -3,6 +3,8 @@ import Home,{Profile} from './components/Home'
 import ToDo from './components/ToDo'
 import Const from './components/Const'
 import FunctionCall from './components/FunctionCall'
+import States from './components/States'
+import Toggle from './components/Toggle'
 
 const App = () => {
   return (
@@ -17,7 +19,10 @@ const App = () => {
     {/* <ToDo/> */}
     {/* <Const/> */}
 
-    <FunctionCall/>
+    {/* <FunctionCall/> */}
+
+    {/* <States/> */}
+    <Toggle/>
     </>
   )
 }
